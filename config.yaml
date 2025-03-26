@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+networks:
+- id: 50
+  start_block: 0
+  contracts:
+  - name: Web3Domains
+    address:
+    - 0x295a7aB79368187a6CD03c464cfaAb04d799784E
+    handler: src/EventHandlers.ts
+    events:    
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)      
+    - event: NewURI(uint256 indexed tokenId, string tokenUri)    

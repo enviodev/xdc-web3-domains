@@ -1,0 +1,14 @@
+type Web3Domain {
+  id: ID! # tokenId
+  owner: String! @index # address of the owner of the domain
+  name: String! @index # domain name
+}
+
+# used to track transfer history
+type Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  tokenId: Web3Domain!
+}
+
