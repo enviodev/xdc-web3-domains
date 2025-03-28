@@ -1,20 +1,10 @@
 import {
   Web3Domains,  
   Web3Domain,
-  Transfer,  
 } from "generated";
 
 Web3Domains.Transfer.handler(async ({ event, context }) => {
   const { from, to, tokenId } = event.params;  
-
-  const transfer: Transfer = {
-    id: `${event.block.number}-${event.logIndex}`,
-    from: from,
-    to: to,    
-    tokenId_id: tokenId.toString(),
-  };
-
-  context.Transfer.set(transfer);  
 
   const web3Domain: Web3Domain | undefined = await context.Web3Domain.get(tokenId.toString());
 
