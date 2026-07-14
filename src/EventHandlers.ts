@@ -1,9 +1,9 @@
-import {
-  Web3Domains,  
-  Web3Domain,
-} from "generated";
+import { indexer } from "envio";
+import { Web3Domain } from "envio";
 
-Web3Domains.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Web3Domains", event: "Transfer" },
+  async ({ event, context }) => {
   const { from, to, tokenId } = event.params;  
 
   const web3Domain: Web3Domain | undefined = await context.Web3Domain.get(tokenId.toString());
@@ -20,9 +20,12 @@ Web3Domains.Transfer.handler(async ({ event, context }) => {
       owner: to,
     })
   }
-});
+}
+);
 
-Web3Domains.NewURI.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Web3Domains", event: "NewURI" },
+  async ({ event, context }) => {
   const { tokenId, tokenUri } = event.params;
 
   const web3Domain: Web3Domain | undefined = await context.Web3Domain.get(tokenId.toString());
@@ -36,6 +39,6 @@ Web3Domains.NewURI.handler(async ({ event, context }) => {
       name: tokenUri,
     })
   }
-});
-
+}
+);
 

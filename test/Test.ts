@@ -1,8 +1,5 @@
 import assert from "assert";
-import { 
-  TestHelpers,
-  Web3Domains_Approval
-} from "generated";
+import { TestHelpers, Web3Domains_Approval } from "envio";
 const { MockDb, Web3Domains } = TestHelpers;
 
 describe("Web3Domains contract Approval event tests", () => {
